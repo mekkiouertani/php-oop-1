@@ -8,9 +8,10 @@ class Movie
     private string $vote_average;
     private string $poster_path;
     private string $original_language;
+    private $genre_ids;
 
     // Costruttore della classe Movie
-    function __construct($id, $title, $overview, $vote, $image, $language)
+    function __construct($id, $title, $overview, $vote, $image, $language, $genre)
     {
         // Inizializza le proprietà con i valori passati al costruttore
         $this->id = $id;
@@ -19,6 +20,7 @@ class Movie
         $this->vote_average = $vote;
         $this->poster_path = $image;
         $this->original_language = $language;
+        $this->genre_ids = $genre;
     }
 
     // Metodo per ottenere la bandiera del paese
@@ -39,6 +41,7 @@ class Movie
         }
         return $this->currentFlag = "https://flagsapi.com/" . $apiFlag . "/flat/64.png";
     }
+
     // Metodo per ottenere la rappresentazione visuale del voto
     public function getVote()
     {
@@ -60,6 +63,7 @@ class Movie
         $content = substr($this->overview, 0, 100) . '...';
         $custom = $this->getVote();
         $language = $this->getFlagApi();
+        $genre = $this->genre_ids;
         include __DIR__ . '/../Views/card.php';
     }
 
@@ -74,6 +78,6 @@ $movies = [];
 
 // Crea istanze della classe Movie per ogni elemento nella lista dei film
 foreach ($movieList as $item) {
-    $movies[] = new Movie($item['id'], $item['title'], $item['overview'], $item['vote_average'], $item['poster_path'], $item['original_language']);
+    $movies[] = new Movie($item['id'], $item['title'], $item['overview'], $item['vote_average'], $item['poster_path'], $item['original_language'], $item['genre_ids']);
 }
 ?>

@@ -14,8 +14,12 @@
                     <small>
                         <img src="<?= $language ?>" alt="flag">
                     </small>
+
                 </div>
             </div>
+            <small>
+                <?php include __DIR__ . '/../Model/Genre.php' ?>
+            </small>
         </div>
     </div>
 </div>
