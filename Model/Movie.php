@@ -21,6 +21,24 @@ class Movie
         $this->original_language = $language;
     }
 
+    // Metodo per ottenere la bandiera del paese
+    public function getFlagApi()
+    {
+        $apiFlag = strtoupper(substr($this->original_language, 0, 2));
+
+        if ($apiFlag === "EN") {
+            $apiFlag = "GB";
+        } elseif ($apiFlag === "JA") {
+            $apiFlag = "JP";
+        } elseif ($apiFlag === "DA") {
+            $apiFlag = "CA";
+        } elseif ($apiFlag === "ZH") {
+            $apiFlag = "ES";
+        } elseif ($apiFlag === "HI") {
+            $apiFlag = "CL";
+        }
+        return $this->currentFlag = "https://flagsapi.com/" . $apiFlag . "/flat/64.png";
+    }
     // Metodo per ottenere la rappresentazione visuale del voto
     public function getVote()
     {
@@ -41,6 +59,7 @@ class Movie
         $title = $this->title;
         $content = substr($this->overview, 0, 100) . '...';
         $custom = $this->getVote();
+        $language = $this->getFlagApi();
         include __DIR__ . '/../Views/card.php';
     }
 

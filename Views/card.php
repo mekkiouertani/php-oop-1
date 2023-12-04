@@ -12,6 +12,7 @@
                 <?= $custom ?>
                 <div>
                     <small>
+                        <img src="<?= $language ?>" alt="flag">
                     </small>
                 </div>
             </div>

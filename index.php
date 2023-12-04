@@ -6,10 +6,11 @@ include __DIR__ . '/Model/Movie.php';
 ?>
 
 <main class="container">
-    <div class="row gy-5 ">
+    <div class="row gy-5">
         <?php
         foreach ($movies as $movie) {
             $movie->printCard();
+            $movie->getFlagApi();
         } ?>
     </div>
 </main>
